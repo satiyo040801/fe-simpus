@@ -1,6 +1,8 @@
 // Data contoh untuk pratinjau tampilan (Buku Populer).
 // Pada implementasi nyata, data ini diganti dengan hasil fetch dari
 // backend Laravel: GET /api/books/popular (lihat src/services/api.js)
+import atomicHabitsCover from '../assets/image/buku/anatomic habits.jpeg'
+import filosofiTerasCover from '../assets/image/buku/filosofi teras.jpg'
 
 export const CATEGORIES = [
   'Semua Kategori',
@@ -21,6 +23,7 @@ export const popularBooks = [
     category: 'Pengembangan Diri',
     color: '#1E2A4A',
     accent: '#E7B84B',
+    cover: atomicHabitsCover,
   },
   {
     id: 2,
@@ -28,6 +31,7 @@ export const popularBooks = [
     category: 'Filsafat',
     color: '#7FB6B0',
     accent: '#F4C542',
+    cover: filosofiTerasCover,
   },
   {
     id: 3,
