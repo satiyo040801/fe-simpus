@@ -65,7 +65,7 @@ export default function Login() {
       try {
         await login({ email: values.email.trim(), password: values.password })
         setStatus({ type: 'success', message: 'Login berhasil. Mengalihkan...' })
-        setTimeout(() => navigate('/', { replace: true }), 600)
+        setTimeout(() => navigate('/admin', { replace: true }), 600)
       } catch (err) {
         const message = err.response?.data?.message || err.response?.data?.error || err.message || 'Email atau password salah'
         setStatus({ type: 'error', message })

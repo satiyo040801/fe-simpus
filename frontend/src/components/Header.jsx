@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoBiru from "../assets/image/logobiru.png";
 import iconUserSolid from "../assets/icon/basil_user-solid.svg";
+import { useAuth } from "../lib/auth.jsx";
 
 const NAV_LINKS = [
   { label: "Beranda", href: "#beranda" },
@@ -23,6 +24,7 @@ function scrollToTarget(id) {
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("Beranda");
+  const { user } = useAuth();
 
   useEffect(() => {
     const ids = NAV_LINKS.map((l) => l.href);
@@ -91,13 +93,22 @@ export default function Header() {
           ))}
         </nav>
 
-            <Link
-              to="/login"
-              className="hidden shrink-0 items-center justify-center gap-[15px] rounded-[20px] bg-[#0B78E3] font-['Inter'] text-[18px] font-bold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.98] lg:inline-flex lg:h-[40px] lg:w-[133px]"
-            >
-              <img src={iconUserSolid} alt="User Icon" className="h-[25px] w-[25px] object-contain" />
-              Login
-            </Link>
+            {user ? (
+              <Link
+                to="/admin"
+                className="hidden shrink-0 items-center justify-center gap-2 rounded-[20px] bg-[#0B78E3] px-5 font-['Inter'] text-[16px] font-bold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.98] lg:inline-flex lg:h-[40px]"
+              >
+                Dashboard Admin
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="hidden shrink-0 items-center justify-center gap-[15px] rounded-[20px] bg-[#0B78E3] font-['Inter'] text-[18px] font-bold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.98] lg:inline-flex lg:h-[40px] lg:w-[133px]"
+              >
+                <img src={iconUserSolid} alt="User Icon" className="h-[25px] w-[25px] object-contain" />
+                Login
+              </Link>
+            )}
 
 
         <button
@@ -126,13 +137,22 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <Link
-              to="/login"
-              className="mt-2 inline-flex min-h-[44px] w-full touch-manipulation items-center justify-center gap-[15px] rounded-[20px] bg-[#0B78E3] font-['Inter'] text-[18px] font-bold text-white"
-            >
-              <img src={iconUserSolid} alt="User Icon" className="h-[25px] w-[25px] object-contain" />
-              Login
-            </Link>
+            {user ? (
+              <Link
+                to="/admin"
+                className="mt-2 inline-flex min-h-[44px] w-full touch-manipulation items-center justify-center gap-[15px] rounded-[20px] bg-[#0B78E3] font-['Inter'] text-[18px] font-bold text-white"
+              >
+                Dashboard Admin
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="mt-2 inline-flex min-h-[44px] w-full touch-manipulation items-center justify-center gap-[15px] rounded-[20px] bg-[#0B78E3] font-['Inter'] text-[18px] font-bold text-white"
+              >
+                <img src={iconUserSolid} alt="User Icon" className="h-[25px] w-[25px] object-contain" />
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}

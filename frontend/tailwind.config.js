@@ -24,6 +24,7 @@ export default {
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        poppins: ['"Poppins"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         card: '0 8px 24px -12px rgba(15, 42, 82, 0.18)',
